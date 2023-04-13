@@ -56,7 +56,27 @@ void Game::playTurn()
         turn += p1->getName() + " played " + c1->getNumString() + " of " + c1->getShape() + " " +
                 p2->getName() + " played " + c2->getNumString() + " of " + c2->getShape() + ". ";
 
-        if (c1->getNum() > c2->getNum())
+        if (c1->getNum() == 1 && c2->getNum() > 2)
+        {
+            //  if p1 has an ACE
+            p1Wins++;
+            p1->addTaken(p1Cards + p2Cards);
+            turn += p1->getName() + " wins.";
+            turns.push_back(turn);
+            turn = "";
+            break;
+        }
+        else if (c2->getNum() == 1 && c1->getNum() > 2)
+        {
+            //  if p2 has an ACE
+            p2Wins++;
+            p2->addTaken(p1Cards + p2Cards);
+            turn += p2->getName() + " wins.";
+            turns.push_back(turn);
+            turn = "";
+            break;
+        }
+        else if (c1->getNum() > c2->getNum())
         {
             p1Wins++;
             p1->addTaken(p1Cards + p2Cards);

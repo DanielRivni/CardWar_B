@@ -14,6 +14,8 @@ string Card::getNumString()
 
     switch (this->num)
     {
+    case 1:
+        return "Ace";
     case 11:
         return "Jack";
     case 12:
